@@ -1,7 +1,7 @@
 import Loader from "../../components/Loader/Loader";
 import s from "./HomePage.module.css";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import { selectError, selectLoading } from "../../redux/contacts/selections";
+import { selectError, selectLoading } from "../../redux/contacts/selectors";
 import { useSelector } from "react-redux";
 import { LuContactRound } from "react-icons/lu";
 

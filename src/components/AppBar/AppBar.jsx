@@ -15,3 +15,5 @@ export const AppBar = () => {
     </div>
   );
 };
+
+export default AppBar;
