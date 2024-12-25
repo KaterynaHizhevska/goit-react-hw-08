@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, lazy, Suspense } from "react";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
+import Layout from "./Layout/Layout";
+import Loader from "./Loader/Loader";
 import "./App.css";
 
 
@@ -14,8 +16,8 @@ const RegistrationPage = lazy(() =>
 const ContactPage = lazy(() => import("../pages/ContactsPage/ContactPage"));
 const PrivateRoute = lazy(() => import("./PrivateRoute"));
 const RestrictedRoute = lazy(() => import("./RestrictedRoute"));
-import Layout from "./Layout/Layout";
-import Loader from "./Loader/Loader";
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
+
 
 function App() {
     const dispatch = useDispatch();
@@ -58,6 +60,7 @@ function App() {
               }
                       />
                   </Route>
+                  <Route path='*' element={<NotFoundPage />} />
               </Routes>
           </Suspense>
     </div>
