@@ -23,12 +23,9 @@ const RegistrationForm = () => {
       .required('Required'),
   });
 
-  const handleSubmit = (values, options) => {
-    dispatch(register({
-      name: values.name,
-      email: values.email,
-      password: values.password
-    }))
+    const handleSubmit = (values, options) => {
+      console.log(values);
+    dispatch(register(values))
     .unwrap()
     .then((data) => {
       toast(`Welcome ${data?.user?.name}`);
