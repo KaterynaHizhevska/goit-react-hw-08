@@ -7,7 +7,7 @@ const UserMenu = () => {
   return (
     <div>
       <button
-        className={s.logoutBtn}
+        className={s.btn}
         type="button"
         onClick={() => dispatch(logout())}
       >

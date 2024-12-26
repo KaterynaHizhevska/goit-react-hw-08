@@ -1,0 +1,26 @@
+.container {
+background-color: rgb(114, 164, 255);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 24px;
+        padding: 24px;
+        width: 100vh;
+}
+
+.searchInput {
+    background-color: #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+    height: 30px;
+    border: none;
+    max-width: 420px;
+    outline: none;
+}
+
+
+
+        
+        
+    

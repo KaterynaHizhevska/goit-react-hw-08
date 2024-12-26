@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(114, 164, 255);
+        padding: 24px;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 10, 70, 0.2);
+}
+ 

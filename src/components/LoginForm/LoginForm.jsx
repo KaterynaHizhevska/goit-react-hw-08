@@ -13,14 +13,11 @@ const LoginForm = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     const orderSchema = Yup.object({
-    name: Yup.string()
-      .min(3, 'Minimum 3 characters')
-      .max(50, 'Maximum 50 characters')
+    email: Yup.string()
+      .email('Invalid email address')
       .required('Required'),
-    number: Yup.string()
-      .matches(/^\+?[1-9]\d{1,14}$/, 'Invalid phone number')
-      .min(3, 'Minimum 3 digits')
-      .max(50, 'Maximum 50 digits')
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
       .required('Required'),
   });
 

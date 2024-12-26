@@ -31,13 +31,13 @@ function Contact({ id, name, number }) {
                 <p><FaUser /> {name}</p>
                 <p><FaPhoneAlt /> {number}</p>
             </div>
-            <div>
+            <div className={s.box}>
                 <button
                 onClick={() => dispatch(deleteContact(id))}
-                    className={s.btn}>Delete</button>
+                    className={s.btnContact}>Delete</button>
                 <button
                 onClick={() => setIsModal(true)}
-                className={s.btn}>Edit Contact</button>
+                className={s.btnContact}>Edit Contact</button>
             </div>
             {isModal && (
                 <div className={s.modalContainer}>
@@ -62,7 +62,7 @@ function Contact({ id, name, number }) {
                             className={s.input}
                         />
                     </label>
-                    <button className={s.btn} onClick={handleSaveEdit}>Save</button>
+                    <button className={s.btnContact} onClick={handleSaveEdit}>Save</button>
                 </div>
             )}
         </li>
