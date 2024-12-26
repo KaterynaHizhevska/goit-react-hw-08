@@ -7,42 +7,47 @@ import s from "./RegistrationForm.module.css";
 import toast from "react-hot-toast";
 
 const RegistrationForm = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const orderSchema = Yup.object({
+  const orderSchema = Yup.object({
     name: Yup.string()
       .min(3, 'Minimum 3 characters')
       .max(50, 'Maximum 50 characters')
       .required('Required'),
-    number: Yup.string()
-      .matches(/^\+?[1-9]\d{1,14}$/, 'Invalid phone number')
-      .min(3, 'Minimum 3 digits')
-      .max(50, 'Maximum 50 digits')
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Required'),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
       .required('Required'),
   });
 
-    const handleSubmit = (values, options) => {
-    dispatch(register(values))
-      .unwrap()
-      .then((data) => {
-        toast(`Welcome ${data?.user?.name}`);
-        navigate("/contacts");
-      })
-      .catch(() => {
-        toast.error("Try again!");
-      });
+  const handleSubmit = (values, options) => {
+    dispatch(register({
+      name: values.name,
+      email: values.email,
+      password: values.password
+    }))
+    .unwrap()
+    .then((data) => {
+      toast(`Welcome ${data?.user?.name}`);
+      navigate("/contacts");
+    })
+    .catch((error) => {
+      toast.error(`Try again! Error: ${error.message}`);
+    });
     options.resetForm();
-    };
-    
-    const initialValues = {
+  };
+
+  const initialValues = {
     name: "",
     email: "",
     password: "",
-    };
-    
-    return (
-      <div className={s.container}>
+  };
+
+  return (
+    <div className={s.container}>
       <h2 className={s.title}>Registration</h2>
       <Formik onSubmit={handleSubmit} initialValues={initialValues} validationSchema={orderSchema}>
         <Form className={s.form}>
@@ -56,7 +61,7 @@ const RegistrationForm = () => {
           <Field
             name="password"
             type="password"
-            placeholder="Enter pass"
+            placeholder="Enter password"
             autoComplete="new-password"
             required
             className={s.input}
@@ -66,8 +71,8 @@ const RegistrationForm = () => {
           </button>
         </Form>
       </Formik>
-    </div>  
-    )
-}
+    </div>
+  );
+};
 
 export default RegistrationForm;
