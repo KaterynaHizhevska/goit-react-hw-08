@@ -1,7 +1,17 @@
-export const selectQueryFilter = (state) => {
-  const filteredContacts = state.contacts.items.filter(contact =>
-    contact.name.toLowerCase().includes(state.filters.query.toLowerCase())
-  );
+import { createSelector } from 'reselect';
 
-  return filteredContacts; 
-};
+// Базові селектори
+const selectContacts = (state) => state.contacts.items;
+const selectQuery = (state) => state.filters.query;
+
+// Мемоізований селектор
+export const selectQueryFilter = createSelector(
+  [selectContacts, selectQuery],
+  (contacts, query) => {
+    if (!query) return contacts;
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+);

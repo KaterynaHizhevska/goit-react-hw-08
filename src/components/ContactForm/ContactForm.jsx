@@ -14,7 +14,7 @@ function ContactForm() {
     };
 
     const orderSchema = Yup.object({
-    name: Yup.string()
+    username: Yup.string()
       .min(3, 'Minimum 3 characters')
       .max(50, 'Maximum 50 characters')
       .required('Required'),
@@ -62,7 +62,6 @@ function ContactForm() {
               className={s.error}
             />
           </label>
-
           <button type="submit" className={s.btn}>
             Add contact
           </button>
